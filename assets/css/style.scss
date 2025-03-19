@@ -37,6 +37,7 @@
 29.	Modal
 30. Faq CSS
 31. Pricing Table CSS
+32. user-center 
 */
 
 /* 1. Theme default css */
@@ -2273,3 +2274,101 @@ form.form-signin-signup{
 }
 
 
+/* 32. ========user-center CSS ===========*/
+/* 32. user-center */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.profile-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.profile-header {
+    background-color: #e6f0fa;
+    padding: 20px;
+    position: relative;
+}
+
+.profile-info-top {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #fff;
+    margin-right: 20px;
+    position: relative;
+    top: 30px;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.name-box h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.title-box {
+    padding-left: 140px;
+    margin-top: 10px;
+    color: #666;
+}
+
+.profile-body {
+    display: flex;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 200px;
+    border-right: 1px solid #eee;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.sidebar li:hover,
+.sidebar li.active {
+    background-color: #e6f0fa;
+    font-weight: bold;
+}
+
+.content {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
