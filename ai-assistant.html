@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>睡眠社区 - 睡眠管理系统</title>
-    <meta name="description" content="与更多用户交流睡眠经验，分享助眠技巧">
+    <title>AI 伴眠助手 - 睡眠管理系统</title>
+    <meta name="description" content="AI 伴眠助手，为您提供个性化的睡眠建议和陪伴">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 
@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="assets/css/default.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/chat-assistant.css">
 </head>
 <body>
     <!-- preloader -->
@@ -76,68 +77,28 @@
     <!-- ============== main-content-start ============== -->
     <div class="main-content">
         <div class="container">
-            <h1>睡眠社区</h1>
-            <div class="row">
-                <div class="col-md-8">
-                    <!-- 社区动态 -->
-                    <div class="community-feed">
-                        <h3>最新动态</h3>
-                        <div class="post-item">
-                            <div class="post-header">
-                                <img src="assets/img/author-1.png" alt="用户头像" class="avatar">
-                                <div class="post-info">
-                                    <h4>用户A</h4>
-                                    <small>2小时前</small>
-                                </div>
-                            </div>
-                            <div class="post-content">
-                                <p>分享一个对我很有用的助眠方法...</p>
-                            </div>
-                        </div>
-                        <div class="post-item">
-                            <div class="post-header">
-                                <img src="assets/img/author-2.png" alt="用户头像" class="avatar">
-                                <div class="post-info">
-                                    <h4>用户B</h4>
-                                    <small>5小时前</small>
-                                </div>
-                            </div>
-                            <div class="post-content">
-                                <p>最近尝试了4-7-8呼吸法，效果不错...</p>
-                            </div>
-                        </div>
+            <h1>AI 伴眠助手</h1>
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h3>AI 睡眠助手</h3>
+                    <div class="role-selector">
+                        <button class="role-btn" data-role="default">默认助手</button>
+                        <button class="role-btn" data-role="sister">知心大姐姐</button>
+                        <button class="role-btn" data-role="doctor">睡眠医生</button>
+                        <button class="role-btn" data-role="coach">睡眠教练</button>
                     </div>
+                    <button id="stopBtn" class="stop-btn">停止响应</button>
                 </div>
-                <div class="col-md-4">
-                    <!-- 社区功能 -->
-                    <div class="community-features">
-                        <h3>社区功能</h3>
-                        <div class="feature-item">
-                            <h4>睡眠打卡</h4>
-                            <button class="btn btn-primary">今日打卡</button>
-                        </div>
-                        <div class="feature-item">
-                            <h4>热门话题</h4>
-                            <ul>
-                                <li>最有效的助眠方法</li>
-                                <li>如何改善睡眠质量</li>
-                                <li>助眠音乐推荐</li>
-                            </ul>
-                        </div>
-                        <div class="feature-item">
-                            <h4>专家问答</h4>
-                            <a href="ai-assistant.html" class="btn btn-secondary">提问</a>
-                        </div>
-                    </div>
+                <div id="chatBody" class="chat-body"></div>
+                <div class="chat-input">
+                    <input type="text" id="chatInput" placeholder="输入你的睡眠问题...">
+                    <button id="sendBtn">发送</button>
                 </div>
             </div>
         </div>
     </div>
     <!-- ============= main-content-end ================= -->
 
-    <!-- Chat Assistant CSS -->
-    <link rel="stylesheet" href="assets/css/chat-assistant.css">
-    
     <!-- JS here -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
@@ -155,6 +116,5 @@
     <script src="assets/js/velocity.ui.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/chat-assistant.js"></script>
-
 </body>
 </html>

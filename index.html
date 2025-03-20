@@ -20,8 +20,12 @@
     <link rel="stylesheet" href="assets/css/default.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/sleep-tips.css">
+    <link rel="stylesheet" href="assets/css/sleep-dashboard.css">
 </head>
 <body>
+
+
     <!-- preloader -->
     <div id="loading">
         <div id="loading-center">
@@ -326,11 +330,48 @@
         </div>
     </div>
     <!-- ============= blog-area-end ==================== -->
+    <!-- 睡眠小贴士容器 -->
+    <div id="sleep-tips-container">
+        <!-- 睡眠小贴士卡片 -->
+        <div id="sleep-tips-card" class="floating-card">
+            <div class="card-header">
+                <h3>睡眠小贴士</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="card-body">
+                <p class="tip-content">早上醒来后，先喝一杯温水，有助于唤醒身体</p>
+            </div>
+        </div>
+    </div>
 
-    <!-- 其他页面内容省略... -->
-
+    <!-- 睡眠看板容器 -->
+    <div id="sleep-dashboard-container">
+        <!-- 睡眠看板 -->
+        <div id="sleep-dashboard" class="floating-card">
+        <div class="dashboard-header">
+            <h3 class="dashboard-title">睡眠看板</h3>
+        </div>
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <div class="stat-value" id="lastNightSleep">7.2小时</div>
+                <div class="stat-label">昨夜睡眠时长</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">良好</div>
+                <div class="stat-label">睡眠质量</div>
+            </div>
+        </div>
+        <div class="chart-container">
+            <canvas id="sleepChart"></canvas>
+        </div>
+        <div class="sleep-advice">
+            <p id="sleepAdvice">建议保持规律的作息时间，避免睡前使用电子设备</p>
+        </div>
+    </div>
     <!-- JS here -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/sleep-dashboard.js"></script>
     <script src="assets/js/popper.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery.meanmenu.js"></script>
@@ -345,5 +386,6 @@
     <script src="assets/js/velocity.min.js"></script>
     <script src="assets/js/velocity.ui.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/sleep-tips.js"></script>
 </body>
 </html>
