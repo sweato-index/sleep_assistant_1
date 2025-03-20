@@ -188,7 +188,7 @@
                         </div>
                             <h3>睡前放松练习</h3>
                             <p>通过轻柔的动作和冥想引导，帮助您放松身心</p>
-                            <button class="btn-soft">开始练习</button>
+                            <a href="https://search.bilibili.com/all?keyword=%E7%9D%A1%E5%89%8D%E5%86%A5%E6%83%B3%E6%B7%B1%E5%BA%A6%E7%9D%A1%E7%9C%A0&from_source=webtop_search&spm_id_from=333.1007&search_source=2" class="btn-soft">开始练习</a>
                         </div>
                     </div>
                 </div>
@@ -865,6 +865,32 @@
     /* 已记录状态 */
     .sleep-record-btn.recorded .icon-container {
         background: #28a745;
+    }
+
+    /* 确保链接按钮样式与普通按钮一致 */
+    a.btn-soft {
+        display: inline-block;
+        text-decoration: none;
+        text-align: center;
+        padding: 8px 20px;
+        border-radius: 20px;
+        background: #4f29f0;
+        color: white;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    a.btn-soft:hover {
+        background: #3a1eb0;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(79, 41, 240, 0.3);
+        text-decoration: none;
+        color: white;
+    }
+
+    a.btn-soft:active {
+        transform: translateY(0);
     }
     </style>
 
