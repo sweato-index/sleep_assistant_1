@@ -1,0 +1,534 @@
+<!doctype html>
+<html class="no-js" lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>睡眠助手 - 睡前放松训练</title>
+    <meta name="description" content="通过瑜伽视频，帮助用户放松身心，改善睡眠质量">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/flat-icon/flaticon.css">
+    <link rel="stylesheet" href="assets/css/meanmenu.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/aos.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/default.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+    <!-- preloader -->
+    <div id="loading">
+        <div id="loading-center">
+            <div id="loading-center-absolute">
+                <div class="object" id="object_one"></div>
+                <div class="object" id="object_two"></div>
+                <div class="object" id="object_three"></div>
+                <div class="object" id="object_four"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+
+    <!-- ============= header-area-start ==================== -->
+    <header class="header-transfrent">
+        <div class="header-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-1 col-lg-1">
+                        <div class="logo-area">
+                            <a href="index.html"><img src="assets/img/logo.png" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-8">
+                        <div class="main-menu">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <li><a href="index.html">首页</a></li>
+                                    <li><a href="science.html">睡眠知识中心</a></li>
+                                    <li><a href="tracker.html">睡眠记录与分析</a></li>
+                                    <li><a href="assessment.html">睡眠评估中心</a></li>
+                                    <li><a href="advice.html">睡眠助手</a></li>
+                                    <li><a href="profile.html">用户中心</a></li>
+                                    <li><a href="community.html">睡眠社区</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="mobile-menu"></div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                        <div class="header-action-button f-right">
+                            <a href="#signinModal" data-toggle="modal" class="btn header-btn login active-btn">登录</a>
+                            <a href="#signupModal" data-toggle="modal" class="btn header-btn">注册</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ============= header-area-end ====================== -->
+
+    <!-- ============== main-content-start ============== -->
+    <div class="main-content">
+        <div class="content-wrapper">
+            <div class="row">
+                <!-- 左侧视频播放器 -->
+                <div class="col-lg-6">
+                    <div class="video-player-container">
+                        <div class="video-wrapper">
+                            <video id="sleepVideo" class="main-video" controls>
+                                <source src="assets/videos/sleep-meditation.mp4" type="video/mp4">
+                                您的浏览器不支持视频播放。
+                            </video>
+                        </div>
+                        <div class="video-info">
+                            <h3>睡前放松冥想</h3>
+                            <p class="video-description">通过温和的引导冥想，帮助您放松身心，为美好的睡眠做准备。</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 右侧其他内容 -->
+                <div class="col-lg-6">
+                    <!-- 原有内容放在这里 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add new CSS -->
+    <style>
+    /* 全局背景设置 */
+    body {
+        background: url('assets/img/forestbackground.jpg') no-repeat center center fixed;
+        background-size: cover;
+        min-height: 100vh;
+        font-family: 'Noto Sans SC', sans-serif;
+    }
+
+    /* 主内容区域样式 */
+    .main-content {
+        padding: 40px 0;
+        min-height: 100vh;
+        background: rgba(57, 90, 92, 0.3);
+        backdrop-filter: blur(10px);
+    }
+
+    /* 内容容器样式 */
+    .content-wrapper {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .header-controls {
+        display: flex;
+        gap: 15px;
+    }
+
+    /* 模块卡片通用样式 */
+    .module-card {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        height: 100%;
+        transition: transform 0.3s ease;
+    }
+
+    .module-card:hover {
+        transform: translateY(-3px);
+    }
+
+    @keyframes move {
+        50% {
+            padding-left: 8px;
+            padding-right: 0px;
+        }
+
+        100% {
+            padding-right: 4px;
+        }
+    }
+
+    @keyframes slice {
+        60% {
+            width: 100%;
+            left: 4px;
+        }
+
+        100% {
+            width: 100%;
+            left: -2px;
+            padding-left: 0;
+        }
+    }
+
+    @keyframes check-01 {
+        0% {
+            width: 4px;
+            top: auto;
+            transform: rotate(0);
+        }
+
+        50% {
+            width: 0px;
+            top: auto;
+            transform: rotate(0);
+        }
+
+        51% {
+            width: 0px;
+            top: 8px;
+            transform: rotate(45deg);
+        }
+
+        100% {
+            width: 5px;
+            top: 8px;
+            transform: rotate(45deg);
+        }
+    }
+
+    @keyframes check-02 {
+        0% {
+            width: 4px;
+            top: auto;
+            transform: rotate(0);
+        }
+
+        50% {
+            width: 0px;
+            top: auto;
+            transform: rotate(0);
+        }
+
+        51% {
+            width: 0px;
+            top: 8px;
+            transform: rotate(-45deg);
+        }
+
+        100% {
+            width: 10px;
+            top: 8px;
+            transform: rotate(-45deg);
+        }
+    }
+
+    @keyframes firework {
+        0% {
+            opacity: 1;
+            box-shadow: 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0;
+        }
+
+        30% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            box-shadow: 0 -15px 0 0px #4f29f0, 14px -8px 0 0px #4f29f0, 14px 8px 0 0px #4f29f0, 0 15px 0 0px #4f29f0, -14px 8px 0 0px #4f29f0, -14px -8px 0 0px #4f29f0;
+        }
+    }
+
+    /* 优化按钮样式，匹配复选框主题 */
+    .btn-soft {
+        background: #4f29f0;
+        color: white;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    .btn-soft:hover {
+        background: #3a1eb0;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(79, 41, 240, 0.3);
+    }
+
+    .btn-soft.btn-outline {
+        background: transparent;
+        color: #4f29f0;
+        border: 1px solid #4f29f0;
+    }
+
+    .btn-soft.btn-outline:hover {
+        background: rgba(79, 41, 240, 0.1);
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+        .content-wrapper {
+            margin: 15px;
+            padding: 15px;
+        }
+        
+        .module-card {
+            margin-bottom: 20px;
+        }
+    }
+
+    /* 视频播放器样式 */
+    .video-player-container {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .video-wrapper {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 宽高比 */
+        background: #000;
+    }
+
+    .main-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .video-info {
+        padding: 20px;
+    }
+
+    .video-info h3 {
+        color: #333;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .video-description {
+        color: #666;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 0;
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 991px) {
+        .video-player-container {
+            margin-bottom: 30px;
+        }
+    }
+    </style>
+
+    <!-- JS here -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.meanmenu.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/aos.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <script src="assets/js/wow.min.js"></script>
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/velocity.min.js"></script>
+    <script src="assets/js/velocity.ui.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const playBtn = document.getElementById('playBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const favoriteBtn = document.getElementById('favoriteBtn');
+        const playOverlay = document.getElementById('playOverlay');
+        const progressBar = document.getElementById('audioProgress');
+        const currentTimeEl = document.getElementById('currentTime');
+        const totalTimeEl = document.getElementById('totalTime');
+        
+        let isPlaying = false;
+        
+        // 播放/暂停按钮点击事件
+        playBtn.addEventListener('click', togglePlay);
+        playOverlay.addEventListener('click', togglePlay);
+        
+        // 收藏按钮点击事件
+        favoriteBtn.addEventListener('click', function() {
+            this.querySelector('i').classList.toggle('fas');
+            this.querySelector('i').classList.toggle('far');
+        });
+        
+        // 模拟进度更新
+        let progressInterval;
+        
+        function togglePlay() {
+            isPlaying = !isPlaying;
+            
+            if(isPlaying) {
+                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                startProgressSimulation();
+            } else {
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                clearInterval(progressInterval);
+            }
+        }
+        
+        function startProgressSimulation() {
+            let progress = 0;
+            progressInterval = setInterval(() => {
+                progress += 0.5;
+                if(progress > 100) {
+                    clearInterval(progressInterval);
+                    isPlaying = false;
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    return;
+                }
+                
+                progressBar.style.width = `${progress}%`;
+                
+                // 更新时间显示
+                const currentSeconds = Math.floor(progress * 30 * 60 / 100);
+                const minutes = Math.floor(currentSeconds / 60);
+                const seconds = currentSeconds % 60;
+                currentTimeEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 500);
+        }
+
+        // 全部标记完成按钮
+        const markAllBtn = document.getElementById('markAllBtn');
+        if(markAllBtn) {
+            markAllBtn.addEventListener('click', function() {
+                const checkboxes = document.querySelectorAll('#checklist input[type="checkbox"]');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = true;
+                });
+            });
+        }
+
+        // 获取呼吸训练元素
+        const startBtn = document.getElementById('startBreathing');
+        const stopBtn = document.getElementById('stopBreathing');
+        const roundsSelect = document.getElementById('breathingRounds');
+        const breathingCircle = document.getElementById('breathingCircle');
+        const breathingText = document.getElementById('breathingText');
+        
+        let isBreathing = false;
+        let currentRound = 0;
+        let totalRounds = 3; // 默认3轮
+        
+        // 启动呼吸训练
+        startBtn.addEventListener('click', function() {
+            if (isBreathing) return;
+            
+            isBreathing = true;
+            currentRound = 0;
+            totalRounds = parseInt(roundsSelect.value);
+            
+            // 更新UI状态
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+            roundsSelect.disabled = true;
+            
+            // 重置圆圈状态以确保动画正常工作
+            breathingCircle.style.animation = 'none';
+            breathingCircle.offsetHeight; // 触发重排
+            breathingCircle.style.animation = null;
+            
+            startBreathingCycle();
+        });
+        
+        // 停止呼吸训练
+        stopBtn.addEventListener('click', function() {
+            stopBreathing();
+        });
+        
+        function startBreathingCycle() {
+            currentRound++;
+            
+            if (currentRound > totalRounds) {
+                stopBreathing();
+                breathingText.textContent = "训练完成!";
+                return;
+            }
+            
+            // 吸气阶段 - 4秒
+            breathingText.textContent = `第${currentRound}轮: 吸气 (4秒)`;
+            breathingCircle.className = 'breathing-circle'; // 清除之前的类
+            void breathingCircle.offsetWidth; // 触发重排，重置动画
+            breathingCircle.className = 'breathing-circle inhale';
+            
+            setTimeout(() => {
+                // 屏息阶段 - 7秒
+                breathingText.textContent = `第${currentRound}轮: 屏息 (7秒)`;
+                breathingCircle.className = 'breathing-circle'; // 清除之前的类
+                void breathingCircle.offsetWidth; // 触发重排，重置动画
+                breathingCircle.className = 'breathing-circle hold';
+                
+                setTimeout(() => {
+                    // 呼气阶段 - 8秒
+                    breathingText.textContent = `第${currentRound}轮: 呼气 (8秒)`;
+                    breathingCircle.className = 'breathing-circle'; // 清除之前的类
+                    void breathingCircle.offsetWidth; // 触发重排，重置动画
+                    breathingCircle.className = 'breathing-circle exhale';
+                    
+                    setTimeout(() => {
+                        startBreathingCycle();
+                    }, 8000);
+                }, 7000);
+            }, 4000);
+        }
+        
+        function stopBreathing() {
+            isBreathing = false;
+            
+            // 重置动画和文本
+            breathingCircle.className = 'breathing-circle';
+            breathingCircle.style.transform = 'scale(1)'; // 确保回到初始大小
+            breathingText.textContent = "准备开始";
+            
+            // 重置控制器状态
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            roundsSelect.disabled = false;
+        }
+
+        // 添加睡眠记录按钮功能
+        const sleepRecordBtn = document.getElementById('sleepRecordBtn');
+        
+        sleepRecordBtn.addEventListener('click', function() {
+            // 获取当前时间
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const timeString = `${hours}:${minutes}`;
+            
+            // 记录睡眠时间逻辑
+            console.log(`睡眠时间已记录: ${timeString}`);
+            
+            // 显示记录成功状态
+            this.classList.add('recorded');
+            
+            // 更改提示文本
+            const tooltip = this.querySelector('.tooltip');
+            tooltip.textContent = `已记录: ${timeString} ✓`;
+            
+            // 可以在这里添加发送到服务器的代码
+            
+            // 2秒后恢复原始提示
+            setTimeout(() => {
+                tooltip.textContent = 'GOOD NIGHT 🌙';
+                this.classList.remove('recorded');
+            }, 2000);
+        });
+    });
+    </script>
+</body>
+</html>
