@@ -1,4 +1,12 @@
 $(document).ready(function() {
+    // 初始化AOS动画
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+    });
+
     // 初始化tab切换
     $('.nav-tabs a').click(function(e) {
         e.preventDefault();
