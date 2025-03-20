@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>个性化建议中心 - 睡眠管理系统</title>
+    <title>睡眠助手 - 睡眠管理系统</title>
     <meta name="description" content="根据您的睡眠数据提供个性化改善建议">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
@@ -53,7 +53,7 @@
                                     <li><a href="science.html">睡眠知识中心</a></li>
                                     <li><a href="tracker.html">睡眠记录与分析</a></li>
                                     <li><a href="assessment.html">睡眠评估中心</a></li>
-                                    <li><a href="advice.html">个性化建议中心</a></li>
+                                    <li><a href="advice.html">睡眠助手</a></li>
                                     <li><a href="profile.html">用户中心</a></li>
                                     <li><a href="community.html">睡眠社区</a></li>
                                 </ul>
@@ -75,49 +75,798 @@
 
     <!-- ============== main-content-start ============== -->
     <div class="main-content">
-        <div class="container">
-            <h1>个性化建议中心</h1>
+        <div class="content-wrapper">
+            <!-- 顶部导航 -->
+            <div class="page-header">
+                <h1 class="main-title">您的睡眠助手</h1>
+                <div class="header-controls">
+                    <div class="sleep-record-btn" id="sleepRecordBtn">
+                        <span class="icon-container">
+                            <i class="fas fa-zzz"></i>
+                        </span>
+                        <span class="tooltip">GOOD NIGHT 🌙</span>
+                    </div>
+                </div>
+            </div>
+            
             <div class="row">
-                <div class="col-md-8">
-                    <!-- 建议列表 -->
-                    <div class="advice-list">
-                        <h3>为您推荐的改善建议</h3>
-                        <div class="advice-item">
-                            <h4>作息建议</h4>
-                            <p>根据您的睡眠记录，建议您将就寝时间提前30分钟...</p>
-                            <small>推荐依据：最近一周平均入睡时间较晚</small>
-                        </div>
-                        <div class="advice-item">
-                            <h4>呼吸练习</h4>
-                            <p>尝试4-7-8呼吸法，帮助快速入睡...</p>
-                            <small>推荐依据：入睡时间超过30分钟</small>
+                <!-- 今日睡眠建议 - 更新为复选框样式 -->
+                <div class="col-lg-5 mb-4">
+                    <div class="module-card">
+                        <h3>今日睡眠建议</h3>
+                        <div class="advice-content">
+                            <p class="advice-intro">根据您的睡眠记录，建议您：</p>
+                            <div id="checklist">
+                                <input value="1" name="sleep-advice" type="checkbox" id="advice-01">
+                                <label for="advice-01">在23:00前关闭电子设备</label>
+                                
+                                <input value="2" name="sleep-advice" type="checkbox" id="advice-02">
+                                <label for="advice-02">保持卧室温度在20-22℃</label>
+                                
+                                <input value="3" name="sleep-advice" type="checkbox" id="advice-03">
+                                <label for="advice-03">尝试进行5分钟的深呼吸练习</label>
+                                
+                                <input value="4" name="sleep-advice" type="checkbox" id="advice-04">
+                                <label for="advice-04">睡前1小时避免剧烈运动</label>
+                                
+                                <input value="5" name="sleep-advice" type="checkbox" id="advice-05">
+                                <label for="advice-05">睡前饮用温热的无咖啡因饮品</label>
+                            </div>
+                            <div class="action-buttons mt-4">
+                                <button class="btn-soft me-3">全部加入计划</button>
+                                <button class="btn-soft btn-outline" id="markAllBtn">全部标记完成</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <!-- 助眠工具 -->
-                    <div class="sleep-tools">
-                        <h3>助眠工具</h3>
-                        <div class="tool-item">
-                            <h4>白噪音播放器</h4>
-                            <audio controls>
-                                <source src="assets/audio/white-noise.mp3" type="audio/mpeg">
-                                您的浏览器不支持音频播放
-                            </audio>
+
+                <!-- 助眠音频播放器 - 更新UI -->
+                <div class="col-lg-7 mb-4">
+                    <div class="module-card audio-module">
+                        <div class="modern-player">
+                            <div class="album-cover">
+                                <img src="assets\img\forest1.avif" alt="森林雨声">
+                                <div class="play-overlay" id="playOverlay">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="player-info">
+                                <h4>森林雨声</h4>
+                                <p class="audio-description">自然环境音 · 30分钟</p>
+                                
+                                <div class="player-controls">
+                                    <div class="progress-container">
+                                        <div class="progress-bar" id="audioProgress"></div>
+                                    </div>
+                                    <div class="time-display">
+                                        <span id="currentTime">00:00</span>
+                                        <span>/</span>
+                                        <span id="totalTime">30:00</span>
+                                    </div>
+                                    <div class="control-buttons">
+                                        <button class="control-btn" id="prevBtn"><i class="fas fa-step-backward"></i></button>
+                                        <button class="control-btn play-btn" id="playBtn"><i class="fas fa-play"></i></button>
+                                        <button class="control-btn" id="nextBtn"><i class="fas fa-step-forward"></i></button>
+                                        <button class="control-btn" id="favoriteBtn"><i class="far fa-heart"></i></button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="tool-item">
-                            <h4>冥想指导</h4>
-                            <audio controls>
-                                <source src="assets/audio/meditation.mp3" type="audio/mpeg">
-                                您的浏览器不支持音频播放
-                            </audio>
+                    </div>
+                </div>
+
+                <!-- 呼吸训练 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="module-card">
+                        <div class="breathing-exercise">
+                            <h3 class="section-title">呼吸训练</h3>
+                            <div class="breathing-animation">
+                                <svg viewBox="0 0 100 100" class="breathing-circle" id="breathingCircle">
+                                    <circle cx="50" cy="50" r="45"/>
+                                </svg>
+                                <div class="breathing-text" id="breathingText">准备开始</div>
+                            </div>
+                            <div class="breathing-controls">
+                                <button class="btn btn-primary" id="startBreathing"><i class="fas fa-play"></i> 开始练习</button>
+                                <button class="btn btn-secondary" id="stopBreathing" disabled><i class="fas fa-stop"></i> 停止</button>
+                                <select class="form-control" id="breathingRounds">
+                                    <option value="1">1 轮</option>
+                                    <option value="3" selected>3 轮</option>
+                                    <option value="5">5 轮</option>
+                                </select>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 情绪调节 -->
+                <div class="col-lg-6 mb-4">
+                    <div class="module-card">
+                        <div class="mood-module">
+                            <div class="mood-icon">
+                                <i class="fas fa-spa"></i>
+                        </div>
+                            <h3>睡前放松练习</h3>
+                            <p>通过轻柔的动作和冥想引导，帮助您放松身心</p>
+                            <button class="btn-soft">开始练习</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- ============= main-content-end ================= -->
+
+    <!-- Add new CSS -->
+    <style>
+    /* 全局背景设置 */
+    body {
+        background: url('assets/img/forestbackground.jpg') no-repeat center center fixed;
+        background-size: cover;
+        min-height: 100vh;
+        font-family: 'Noto Sans SC', sans-serif;
+    }
+
+    /* 主内容区域样式 */
+    .main-content {
+        padding: 40px 0;
+        min-height: 100vh;
+        background: rgba(57, 90, 92, 0.3);
+        backdrop-filter: blur(10px);
+    }
+
+    /* 内容容器样式 */
+    .content-wrapper {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    /* 顶部导航样式 */
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 25px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+        margin-bottom: 30px;
+    }
+
+    .header-controls {
+        display: flex;
+        gap: 15px;
+    }
+
+    /* 模块卡片通用样式 */
+    .module-card {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        height: 100%;
+        transition: transform 0.3s ease;
+    }
+
+    .module-card:hover {
+        transform: translateY(-3px);
+    }
+
+    /* 新的音频播放器样式 */
+    .audio-module {
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .modern-player {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .album-cover {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+    }
+
+    .album-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .album-cover:hover img {
+        transform: scale(1.05);
+    }
+
+    .play-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .play-overlay i {
+        color: white;
+        font-size: 50px;
+        background: rgba(0, 0, 0, 0.5);
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .album-cover:hover .play-overlay {
+        opacity: 1;
+    }
+
+    .player-info {
+        padding: 20px;
+    }
+
+    .audio-description {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .player-controls {
+        margin-top: 15px;
+    }
+
+    .progress-container {
+        height: 4px;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 2px;
+        margin-bottom: 8px;
+        cursor: pointer;
+    }
+
+    .progress-bar {
+        height: 100%;
+        width: 30%;
+        background: linear-gradient(90deg, #A3C9D9, #6A8EAA);
+        border-radius: 2px;
+        position: relative;
+    }
+
+    .progress-bar::after {
+        content: '';
+        position: absolute;
+        right: -4px;
+        top: -3px;
+        width: 10px;
+        height: 10px;
+        background: #6A8EAA;
+        border-radius: 50%;
+        display: none;
+    }
+
+    .progress-container:hover .progress-bar::after {
+        display: block;
+    }
+
+    .time-display {
+        display: flex;
+        justify-content: flex-end;
+        color: #666;
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+
+    .time-display span {
+        margin: 0 2px;
+    }
+
+    .control-buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .control-btn {
+        background: none;
+        border: none;
+        color: #555;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .control-btn:hover {
+        color: #A3C9D9;
+        transform: scale(1.1);
+    }
+
+    .play-btn {
+        width: 40px;
+        height: 40px;
+        background: #A3C9D9;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 10px rgba(163, 201, 217, 0.3);
+    }
+
+    .play-btn:hover {
+        background: #8AB3C5;
+        color: white;
+    }
+
+    /* 当播放状态激活时 */
+    .playing .play-btn i {
+        content: "\f04c"; /* 暂停图标 */
+    }
+
+    /* 呼吸训练样式更新 */
+    .breathing-exercise {
+        text-align: center;
+        padding: 30px;
+    }
+
+    .breathing-circle {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+    }
+
+    /* 情绪调节模块样式 */
+    .mood-module {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .mood-icon {
+        font-size: 48px;
+        color: #A3C9D9;
+        margin-bottom: 15px;
+    }
+
+    /* 新增复选框样式 */
+    #checklist {
+        --background: transparent; /* 修改为透明背景适应卡片 */
+        --text: #414856;
+        --check: #4f29f0;
+        --disabled: #c3c8de;
+        --width: 100%;
+        --height: auto;
+        --border-radius: 10px;
+        background: var(--background);
+        width: var(--width);
+        height: var(--height);
+        position: relative;
+        padding: 20px 0;
+        display: grid;
+        grid-template-columns: 30px auto;
+        align-items: center;
+    }
+
+    #checklist label {
+        color: var(--text);
+        position: relative;
+        cursor: pointer;
+        display: grid;
+        align-items: center;
+        width: fit-content;
+        transition: color 0.3s ease;
+        margin: 8px 20px 8px 0; /* 增加垂直间距 */
+        font-size: 16px; /* 调整字体大小 */
+    }
+
+    #checklist label::before, #checklist label::after {
+        content: "";
+        position: absolute;
+    }
+
+    #checklist label::before {
+        height: 2px;
+        width: 8px;
+        left: -27px;
+        background: var(--check);
+        border-radius: 2px;
+        transition: background 0.3s ease;
+    }
+
+    #checklist label:after {
+        height: 4px;
+        width: 4px;
+        top: 8px;
+        left: -25px;
+        border-radius: 50%;
+    }
+
+    #checklist input[type="checkbox"] {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        position: relative;
+        height: 15px;
+        width: 15px;
+        outline: none;
+        border: 0;
+        margin: 0 15px 0 0;
+        cursor: pointer;
+        background: var(--background);
+        display: grid;
+        align-items: center;
+        margin: 8px 20px 8px 0; /* 匹配label的间距 */
+    }
+
+    #checklist input[type="checkbox"]::before, #checklist input[type="checkbox"]::after {
+        content: "";
+        position: absolute;
+        height: 2px;
+        top: auto;
+        background: var(--check);
+        border-radius: 2px;
+    }
+
+    #checklist input[type="checkbox"]::before {
+        width: 0px;
+        right: 60%;
+        transform-origin: right bottom;
+    }
+
+    #checklist input[type="checkbox"]::after {
+        width: 0px;
+        left: 40%;
+        transform-origin: left bottom;
+    }
+
+    #checklist input[type="checkbox"]:checked::before {
+        animation: check-01 0.4s ease forwards;
+    }
+
+    #checklist input[type="checkbox"]:checked::after {
+        animation: check-02 0.4s ease forwards;
+    }
+
+    #checklist input[type="checkbox"]:checked + label {
+        color: var(--disabled);
+        animation: move 0.3s ease 0.1s forwards;
+    }
+
+    #checklist input[type="checkbox"]:checked + label::before {
+        background: var(--disabled);
+        animation: slice 0.4s ease forwards;
+    }
+
+    #checklist input[type="checkbox"]:checked + label::after {
+        animation: firework 0.5s ease forwards 0.1s;
+    }
+
+    @keyframes move {
+        50% {
+            padding-left: 8px;
+            padding-right: 0px;
+        }
+
+        100% {
+            padding-right: 4px;
+        }
+    }
+
+    @keyframes slice {
+        60% {
+            width: 100%;
+            left: 4px;
+        }
+
+        100% {
+            width: 100%;
+            left: -2px;
+            padding-left: 0;
+        }
+    }
+
+    @keyframes check-01 {
+        0% {
+            width: 4px;
+            top: auto;
+            transform: rotate(0);
+        }
+
+        50% {
+            width: 0px;
+            top: auto;
+            transform: rotate(0);
+        }
+
+        51% {
+            width: 0px;
+            top: 8px;
+            transform: rotate(45deg);
+        }
+
+        100% {
+            width: 5px;
+            top: 8px;
+            transform: rotate(45deg);
+        }
+    }
+
+    @keyframes check-02 {
+        0% {
+            width: 4px;
+            top: auto;
+            transform: rotate(0);
+        }
+
+        50% {
+            width: 0px;
+            top: auto;
+            transform: rotate(0);
+        }
+
+        51% {
+            width: 0px;
+            top: 8px;
+            transform: rotate(-45deg);
+        }
+
+        100% {
+            width: 10px;
+            top: 8px;
+            transform: rotate(-45deg);
+        }
+    }
+
+    @keyframes firework {
+        0% {
+            opacity: 1;
+            box-shadow: 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0, 0 0 0 -2px #4f29f0;
+        }
+
+        30% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            box-shadow: 0 -15px 0 0px #4f29f0, 14px -8px 0 0px #4f29f0, 14px 8px 0 0px #4f29f0, 0 15px 0 0px #4f29f0, -14px 8px 0 0px #4f29f0, -14px -8px 0 0px #4f29f0;
+        }
+    }
+
+    /* 优化按钮样式，匹配复选框主题 */
+    .btn-soft {
+        background: #4f29f0;
+        color: white;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+
+    .btn-soft:hover {
+        background: #3a1eb0;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(79, 41, 240, 0.3);
+    }
+
+    .btn-soft.btn-outline {
+        background: transparent;
+        color: #4f29f0;
+        border: 1px solid #4f29f0;
+    }
+
+    .btn-soft.btn-outline:hover {
+        background: rgba(79, 41, 240, 0.1);
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 768px) {
+        .content-wrapper {
+            margin: 15px;
+            padding: 15px;
+        }
+        
+        .module-card {
+            margin-bottom: 20px;
+        }
+    }
+
+    /* 增加提示文字样式 */
+    .advice-intro {
+        font-size: 18px;  /* 增加字体大小 */
+        font-weight: 500; /* 稍微加粗 */
+        margin-bottom: 16px; /* 增加下方间距 */
+        color: #333;     /* 确保文字颜色足够深 */
+    }
+
+    /* 如果需要在移动设备上进一步调大字体 */
+    @media (max-width: 768px) {
+        .advice-intro {
+            font-size: 20px;
+        }
+    }
+
+    /* 修复呼吸圆圈的动画样式 */
+    @keyframes breatheIn {
+        from { transform: scale(1); }
+        to { transform: scale(1.2); }
+    }
+
+    @keyframes holdBreath {
+        from { transform: scale(1.2); }
+        to { transform: scale(1.2); }
+    }
+
+    @keyframes breatheOut {
+        from { transform: scale(1.2); }
+        to { transform: scale(1); }
+    }
+
+    .breathing-circle {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .breathing-circle circle {
+        fill: rgba(79, 41, 240, 0.1);
+        stroke: #4f29f0;
+        stroke-width: 2;
+    }
+
+    /* 重要：确保动画直接应用于SVG元素本身，而不是里面的circle */
+    .breathing-circle.inhale {
+        animation: breatheIn 4s forwards;
+    }
+
+    .breathing-circle.hold {
+        animation: holdBreath 7s forwards;
+    }
+
+    .breathing-circle.exhale {
+        animation: breatheOut 8s forwards;
+    }
+
+    .breathing-text {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 18px;
+        font-weight: 500;
+        min-height: 24px;
+        color: #4f29f0;
+    }
+
+    .breathing-animation {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px 0;
+    }
+
+    .breathing-controls {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    /* 美化睡眠助手标题 - 移除装饰性下划线 */
+    .main-title {
+        font-family: 'Noto Sans SC', 'HarmonyOS Sans SC', sans-serif;
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        letter-spacing: 0.5px;
+        background: linear-gradient(135deg, #1A2A40 0%, #4f29f0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+        text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
+        .main-title {
+            font-size: 2rem;
+        }
+    }
+
+    /* 睡眠记录按钮样式 */
+    .sleep-record-btn {
+        width: 4.5em;
+        height: 2.5em;
+        border-radius: 10px;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.3s;
+    }
+
+    .icon-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(79, 41, 240, 0.7);
+        border-radius: 10px;
+        transition: all 0.3s;
+        border: 1px solid rgba(156, 156, 156, 0.466);
+        color: white;
+    }
+
+    /* 自定义ZZZ图标，因为Font Awesome没有直接提供 */
+    .fa-zzz:before {
+        content: "ZZZ";
+        font-family: Arial, sans-serif;
+        font-style: italic;
+        font-weight: bold;
+        font-size: 1rem;
+    }
+
+    .tooltip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: auto; /* 改为自动宽度 */
+        white-space: nowrap; /* 确保文本不换行 */
+        padding: 0.5em 1em;
+        border-radius: 10px;
+        background: white;
+        color: #1A2A40;
+        font-weight: 600;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(-130%);
+        transition: all 0.3s;
+        pointer-events: none;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        left: 50%; /* 水平居中 */
+        transform: translate(-50%, -130%); /* 水平居中并向上偏移 */
+    }
+
+    .tooltip::after {
+        content: "";
+        position: absolute;
+        height: 0.6em;
+        width: 0.6em;
+        bottom: -0.2em;
+        left: 50%;
+        transform: translate(-50%) rotate(45deg);
+        background: white;
+    }
+
+    .sleep-record-btn:hover .tooltip {
+        opacity: 1;
+        transform: translate(-50%, -100%); /* 水平居中并向上偏移 */
+    }
+
+    .sleep-record-btn:hover .icon-container {
+        background: rgba(79, 41, 240, 0.9);
+    }
+
+    /* 点击效果 */
+    .sleep-record-btn:active .icon-container {
+        transform: scale(0.95);
+    }
+
+    /* 已记录状态 */
+    .sleep-record-btn.recorded .icon-container {
+        background: #28a745;
+    }
+    </style>
 
     <!-- JS here -->
     <script src="assets/js/jquery.min.js"></script>
@@ -135,5 +884,192 @@
     <script src="assets/js/velocity.min.js"></script>
     <script src="assets/js/velocity.ui.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const playBtn = document.getElementById('playBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const favoriteBtn = document.getElementById('favoriteBtn');
+        const playOverlay = document.getElementById('playOverlay');
+        const progressBar = document.getElementById('audioProgress');
+        const currentTimeEl = document.getElementById('currentTime');
+        const totalTimeEl = document.getElementById('totalTime');
+        
+        let isPlaying = false;
+        
+        // 播放/暂停按钮点击事件
+        playBtn.addEventListener('click', togglePlay);
+        playOverlay.addEventListener('click', togglePlay);
+        
+        // 收藏按钮点击事件
+        favoriteBtn.addEventListener('click', function() {
+            this.querySelector('i').classList.toggle('fas');
+            this.querySelector('i').classList.toggle('far');
+        });
+        
+        // 模拟进度更新
+        let progressInterval;
+        
+        function togglePlay() {
+            isPlaying = !isPlaying;
+            
+            if(isPlaying) {
+                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                startProgressSimulation();
+            } else {
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                clearInterval(progressInterval);
+            }
+        }
+        
+        function startProgressSimulation() {
+            let progress = 0;
+            progressInterval = setInterval(() => {
+                progress += 0.5;
+                if(progress > 100) {
+                    clearInterval(progressInterval);
+                    isPlaying = false;
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    return;
+                }
+                
+                progressBar.style.width = `${progress}%`;
+                
+                // 更新时间显示
+                const currentSeconds = Math.floor(progress * 30 * 60 / 100);
+                const minutes = Math.floor(currentSeconds / 60);
+                const seconds = currentSeconds % 60;
+                currentTimeEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 500);
+        }
+
+        // 全部标记完成按钮
+        const markAllBtn = document.getElementById('markAllBtn');
+        if(markAllBtn) {
+            markAllBtn.addEventListener('click', function() {
+                const checkboxes = document.querySelectorAll('#checklist input[type="checkbox"]');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = true;
+                });
+            });
+        }
+
+        // 获取呼吸训练元素
+        const startBtn = document.getElementById('startBreathing');
+        const stopBtn = document.getElementById('stopBreathing');
+        const roundsSelect = document.getElementById('breathingRounds');
+        const breathingCircle = document.getElementById('breathingCircle');
+        const breathingText = document.getElementById('breathingText');
+        
+        let isBreathing = false;
+        let currentRound = 0;
+        let totalRounds = 3; // 默认3轮
+        
+        // 启动呼吸训练
+        startBtn.addEventListener('click', function() {
+            if (isBreathing) return;
+            
+            isBreathing = true;
+            currentRound = 0;
+            totalRounds = parseInt(roundsSelect.value);
+            
+            // 更新UI状态
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+            roundsSelect.disabled = true;
+            
+            // 重置圆圈状态以确保动画正常工作
+            breathingCircle.style.animation = 'none';
+            breathingCircle.offsetHeight; // 触发重排
+            breathingCircle.style.animation = null;
+            
+            startBreathingCycle();
+        });
+        
+        // 停止呼吸训练
+        stopBtn.addEventListener('click', function() {
+            stopBreathing();
+        });
+        
+        function startBreathingCycle() {
+            currentRound++;
+            
+            if (currentRound > totalRounds) {
+                stopBreathing();
+                breathingText.textContent = "训练完成!";
+                return;
+            }
+            
+            // 吸气阶段 - 4秒
+            breathingText.textContent = `第${currentRound}轮: 吸气 (4秒)`;
+            breathingCircle.className = 'breathing-circle'; // 清除之前的类
+            void breathingCircle.offsetWidth; // 触发重排，重置动画
+            breathingCircle.className = 'breathing-circle inhale';
+            
+            setTimeout(() => {
+                // 屏息阶段 - 7秒
+                breathingText.textContent = `第${currentRound}轮: 屏息 (7秒)`;
+                breathingCircle.className = 'breathing-circle'; // 清除之前的类
+                void breathingCircle.offsetWidth; // 触发重排，重置动画
+                breathingCircle.className = 'breathing-circle hold';
+                
+                setTimeout(() => {
+                    // 呼气阶段 - 8秒
+                    breathingText.textContent = `第${currentRound}轮: 呼气 (8秒)`;
+                    breathingCircle.className = 'breathing-circle'; // 清除之前的类
+                    void breathingCircle.offsetWidth; // 触发重排，重置动画
+                    breathingCircle.className = 'breathing-circle exhale';
+                    
+                    setTimeout(() => {
+                        startBreathingCycle();
+                    }, 8000);
+                }, 7000);
+            }, 4000);
+        }
+        
+        function stopBreathing() {
+            isBreathing = false;
+            
+            // 重置动画和文本
+            breathingCircle.className = 'breathing-circle';
+            breathingCircle.style.transform = 'scale(1)'; // 确保回到初始大小
+            breathingText.textContent = "准备开始";
+            
+            // 重置控制器状态
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            roundsSelect.disabled = false;
+        }
+
+        // 添加睡眠记录按钮功能
+        const sleepRecordBtn = document.getElementById('sleepRecordBtn');
+        
+        sleepRecordBtn.addEventListener('click', function() {
+            // 获取当前时间
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const timeString = `${hours}:${minutes}`;
+            
+            // 记录睡眠时间逻辑
+            console.log(`睡眠时间已记录: ${timeString}`);
+            
+            // 显示记录成功状态
+            this.classList.add('recorded');
+            
+            // 更改提示文本
+            const tooltip = this.querySelector('.tooltip');
+            tooltip.textContent = `已记录: ${timeString} ✓`;
+            
+            // 可以在这里添加发送到服务器的代码
+            
+            // 2秒后恢复原始提示
+            setTimeout(() => {
+                tooltip.textContent = 'GOOD NIGHT 🌙';
+                this.classList.remove('recorded');
+            }, 2000);
+        });
+    });
+    </script>
 </body>
 </html>
