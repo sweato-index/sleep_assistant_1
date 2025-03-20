@@ -15,8 +15,20 @@ function handleDashboardScroll() {
   }
 }
 
+// 关闭睡眠看板
+function closeDashboard() {
+  const dashboardContainer = document.getElementById('sleep-dashboard-container');
+  dashboardContainer.classList.remove('visible');
+}
+
 // 初始化睡眠看板
 function initSleepDashboard() {
+  // 添加关闭按钮事件监听
+  const closeBtn = document.querySelector('.dashboard-close-btn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeDashboard);
+  }
+
   // 模拟最近一周的睡眠数据
   const sleepData = {
     labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],

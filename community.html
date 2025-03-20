@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="assets/css/default.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/community.css">
 </head>
 <body>
     <!-- preloader -->
@@ -77,56 +78,213 @@
     <div class="main-content">
         <div class="container">
             <h1>睡眠社区</h1>
-            <div class="row">
-                <div class="col-md-8">
-                    <!-- 社区动态 -->
-                    <div class="community-feed">
-                        <h3>最新动态</h3>
-                        <div class="post-item">
-                            <div class="post-header">
-                                <img src="assets/img/author-1.png" alt="用户头像" class="avatar">
-                                <div class="post-info">
-                                    <h4>用户A</h4>
-                                    <small>2小时前</small>
+            <div class="community-tabs">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#forum">论坛/讨论区</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#groups">群组</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#blogs">博客文章</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#qna">专家问答</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#diary">睡眠日记</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#challenges">挑战活动</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <!-- 论坛/讨论区 -->
+                    <div id="forum" class="tab-pane fade show active">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="forum-categories">
+                                    <h3>讨论主题</h3>
+                                    <div class="category-item">
+                                        <h4>失眠问题</h4>
+                                        <p>讨论失眠原因和解决方案</p>
+                                        <a href="#" class="btn btn-primary">查看话题</a>
+                                    </div>
+                                    <div class="category-item">
+                                        <h4>睡眠呼吸暂停</h4>
+                                        <p>分享治疗经验和建议</p>
+                                        <a href="#" class="btn btn-primary">查看话题</a>
+                                    </div>
+                                    <!-- 更多主题... -->
                                 </div>
                             </div>
-                            <div class="post-content">
-                                <p>分享一个对我很有用的助眠方法...</p>
-                            </div>
-                        </div>
-                        <div class="post-item">
-                            <div class="post-header">
-                                <img src="assets/img/author-2.png" alt="用户头像" class="avatar">
-                                <div class="post-info">
-                                    <h4>用户B</h4>
-                                    <small>5小时前</small>
+                            <div class="col-md-4">
+                                <div class="forum-sidebar">
+                                    <h3>热门讨论</h3>
+                                    <ul class="hot-topics">
+                                        <li><a href="#">如何快速入睡？</a></li>
+                                        <li><a href="#">褪黑素使用体验</a></li>
+                                        <li><a href="#">午睡的最佳时长</a></li>
+                                    </ul>
                                 </div>
-                            </div>
-                            <div class="post-content">
-                                <p>最近尝试了4-7-8呼吸法，效果不错...</p>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <!-- 社区功能 -->
-                    <div class="community-features">
-                        <h3>社区功能</h3>
-                        <div class="feature-item">
-                            <h4>睡眠打卡</h4>
-                            <button class="btn btn-primary">今日打卡</button>
+
+                    <!-- 群组 -->
+                    <div id="groups" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="group-list">
+                                    <h3>推荐群组</h3>
+                                    <div class="group-item">
+                                        <h4>早起者联盟</h4>
+                                        <p>帮助养成早起习惯</p>
+                                        <button class="btn btn-primary">加入群组</button>
+                                    </div>
+                                    <div class="group-item">
+                                        <h4>冥想助眠小组</h4>
+                                        <p>分享冥想技巧和经验</p>
+                                        <button class="btn btn-primary">加入群组</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="create-group">
+                                    <h3>创建新群组</h3>
+                                    <form>
+                                        <div class="form-group">
+                                            <label>群组名称</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>群组描述</label>
+                                            <textarea class="form-control" rows="3"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">创建群组</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <div class="feature-item">
-                            <h4>热门话题</h4>
-                            <ul>
-                                <li>最有效的助眠方法</li>
-                                <li>如何改善睡眠质量</li>
-                                <li>助眠音乐推荐</li>
-                            </ul>
+                    </div>
+
+                    <!-- 博客文章 -->
+                    <div id="blogs" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="blog-list">
+                                    <h3>最新文章</h3>
+                                    <div class="blog-item">
+                                        <h4>改善睡眠质量的10个技巧</h4>
+                                        <p>专业睡眠顾问分享实用建议...</p>
+                                        <a href="#" class="btn btn-primary">阅读全文</a>
+                                    </div>
+                                    <div class="blog-item">
+                                        <h4>褪黑素的正确使用方法</h4>
+                                        <p>了解褪黑素的利弊和使用注意事项...</p>
+                                        <a href="#" class="btn btn-primary">阅读全文</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="blog-categories">
+                                    <h3>文章分类</h3>
+                                    <ul>
+                                        <li>睡眠科学</li>
+                                        <li>助眠技巧</li>
+                                        <li>产品评测</li>
+                                        <li>专家观点</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <div class="feature-item">
-                            <h4>专家问答</h4>
-                            <a href="ai-assistant.html" class="btn btn-secondary">提问</a>
+                    </div>
+
+                    <!-- 专家问答 -->
+                    <div id="qna" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="expert-questions">
+                                    <h3>最新问题</h3>
+                                    <div class="question-item">
+                                        <h4>如何改善睡眠质量？</h4>
+                                        <p>专家回答：建议保持规律的作息时间...</p>
+                                        <a href="#" class="btn btn-primary">查看详情</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="ask-question">
+                                    <h3>向专家提问</h3>
+                                    <form>
+                                        <div class="form-group">
+                                            <label>问题标题</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>问题描述</label>
+                                            <textarea class="form-control" rows="3"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">提交问题</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 睡眠日记 -->
+                    <div id="diary" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="diary-sharing">
+                                    <h3>分享你的睡眠日记</h3>
+                                    <form>
+                                        <div class="form-group">
+                                            <label>睡眠时长</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>睡眠质量评分</label>
+                                            <input type="number" min="1" max="10" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>备注</label>
+                                            <textarea class="form-control" rows="3"></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">分享日记</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="diary-tips">
+                                    <h3>改善建议</h3>
+                                    <ul>
+                                        <li>保持规律作息</li>
+                                        <li>睡前避免使用电子设备</li>
+                                        <li>保持卧室环境舒适</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 挑战活动 -->
+                    <div id="challenges" class="tab-pane fade">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="challenge-list">
+                                    <h3>进行中的挑战</h3>
+                                    <div class="challenge-item">
+                                        <h4>7天早睡计划</h4>
+                                        <p>连续7天在10点前入睡</p>
+                                        <button class="btn btn-primary">加入挑战</button>
+                                    </div>
+                                    <div class="challenge-item">
+                                        <h4>30天冥想挑战</h4>
+                                        <p>每天进行10分钟冥想</p>
+                                        <button class="btn btn-primary">加入挑战</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="challenge-progress">
+                                    <h3>我的挑战进度</h3>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <p>7天早睡计划：2/7天完成</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -155,6 +313,7 @@
     <script src="assets/js/velocity.ui.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/chat-assistant.js"></script>
+    <script src="assets/js/community.js"></script>
 
 </body>
 </html>

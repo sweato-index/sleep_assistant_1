@@ -350,6 +350,7 @@
         <div id="sleep-dashboard" class="floating-card">
         <div class="dashboard-header">
             <h3 class="dashboard-title">睡眠看板</h3>
+            <button class="dashboard-close-btn">&times;</button>
         </div>
         <div class="dashboard-stats">
             <div class="stat-card">
@@ -368,6 +369,12 @@
             <p id="sleepAdvice">建议保持规律的作息时间，避免睡前使用电子设备</p>
         </div>
     </div>
+
+    <!-- AI助手悬浮球 -->
+    <div class="ai-assistant-float" style="opacity: 0; transform: translateY(30px);">
+        <img src="assets/img/ai-icon.png" alt="AI助手">
+    </div>
+
     <!-- JS here -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="assets/js/jquery.min.js"></script>
@@ -387,5 +394,7 @@
     <script src="assets/js/velocity.ui.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/sleep-tips.js"></script>
+    <link rel="stylesheet" href="assets/css/ai-assistant.css">
+    <script src="assets/js/ai-assistant.js"></script>
 </body>
 </html>

@@ -37,10 +37,31 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .dashboard-title {
   margin: 0;
   font-size: 18px;
   color: #fff;
+}
+
+.dashboard-close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+}
+
+.dashboard-close-btn:hover {
+  opacity: 0.8;
 }
 
 /* 统计数据 */
