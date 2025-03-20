@@ -89,19 +89,19 @@
                                 <p>1. 过去一个月，您通常需要多长时间才能入睡？</p>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="q1" id="q1a1" value="1">
-                                    <label class="form-check-label" for="q1a1">少于15分钟</label>
+                                    <label class="form-check-label" for="q1a1">少于15分钟（优秀）</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="q1" id="q1a2" value="2">
-                                    <label class="form-check-label" for="q1a2">16-30分钟</label>
+                                    <label class="form-check-label" for="q1a2">16-30分钟（良好）</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="q1" id="q1a3" value="3">
-                                    <label class="form-check-label" for="q1a3">31-60分钟</label>
+                                    <label class="form-check-label" for="q1a3">31-60分钟（较差）</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="q1" id="q1a4" value="4">
-                                    <label class="form-check-label" for="q1a4">超过60分钟</label>
+                                    <label class="form-check-label" for="q1a4">超过60分钟（差）</label>
                                 </div>
                             </div>
 
@@ -261,7 +261,13 @@
                         <span class="progress-text fw-medium">0/21</span>
                     </div>
                 </div>
-                <small class="text-muted d-block mt-2">评分说明：0-5(优秀) | 6-10(注意) | 11-15(警告) | 16-21(严重)</small>
+                <small class="text-muted d-block mt-2">
+                    评分等级：
+                    <span class="text-success">18-14（优秀）</span> |
+                    <span class="text-primary">13-9（良好）</span> |
+                    <span class="text-warning">8-5（一般）</span> |
+                    <span class="text-danger">4-0（需关注）</span>
+                </small>
             </div>
 
             <!-- 雷达图容器（需Chart.js支持） -->

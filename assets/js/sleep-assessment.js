@@ -3,7 +3,7 @@
 const SleepAssessment = (() => {
     // 私有变量
     let sleepRadarChart;
-    const MAX_SCORE = 21;
+    const MAX_SCORE = 19;
     const DIMENSION_MAP = {
         q1: '入睡潜伏期',
         q2: '睡眠时长',
@@ -52,14 +52,15 @@ const SleepAssessment = (() => {
 
     // 计算各维度得分
     const calculateScores = (formData) => ({
-        q1: parseInt(formData.get('q1')) || 0,
-        q2: parseInt(formData.get('q2')) || 0,
-        q3: parseInt(formData.get('q3')) || 0,
-        q4: parseInt(formData.get('q4')) || 0,
-        q5: parseInt(formData.get('q5')) || 0,
-        q6: parseInt(formData.get('q6')) || 0,
-        q7: Array.from(formData.getAll('q7')).reduce((a, v) => a + parseInt(v), 0),
-        q8: Array.from(formData.getAll('q8')).reduce((a, v) => a + parseInt(v), 0)
+        q1: 4-parseInt(formData.get('q1')) || 0,
+        q2: 3-parseInt(formData.get('q2')) || 0,
+        q3: 3-parseInt(formData.get('q3')) || 0,
+        q4: 2-parseInt(formData.get('q4')) || 0,
+        q5: 2-parseInt(formData.get('q5')) || 0,
+        q6: 2-parseInt(formData.get('q6')) || 0,
+        q7: 2-Array.from(formData.getAll('q7')).reduce((a, v) => a + parseInt(v), 0),
+        q8: 2-Array.from(formData.getAll('q8')).reduce((a, v) => a + parseInt(v), 0),
+        
     });
 
     // 更新进度条
@@ -71,8 +72,10 @@ const SleepAssessment = (() => {
         progress.style.width = `${percentage}%`;
         progress.textContent = `${score}/${MAX_SCORE}`;
         progress.className = `progress-bar progress-bar-striped ${
-            score <= 5 ? 'bg-success' :
-            score <= 10 ? 'bg-warning' : 'bg-danger'
+            score >= 15 ? 'bg-success' :      // 15-19 优秀
+            score >= 10 ? 'bg-primary' :       // 10-14 良好
+            score >= 5 ? 'bg-warning' :         // 5-9 一般
+            'bg-danger'                        // 0-4 需关注
         }`;
         
         document.getElementById('sleep-score').textContent = score;
@@ -84,9 +87,26 @@ const SleepAssessment = (() => {
             const element = document.getElementById(`dimension-${q}`);
             if (element) {
                 element.textContent = score;
+                
+                // 根据各维度最大值设置颜色梯度
+                // 假设各维度最高分：
+                // q1:3, q2:3, q3:3, q4:2, q5:2, q6:2, q7:2, q8:2
+                const maxScoreMap = {
+                    q1: 3,
+                    q2: 3,
+                    q3: 3,
+                    q4: 2,
+                    q5: 2,
+                    q6: 2,
+                    q7: 2,
+                    q8: 2
+                };
+                
+                const threshold = maxScoreMap[q] * 0.7; // 按最高分的70%作为优良分界线
                 element.className = `badge rounded-pill ${
-                    score <= 1 ? 'bg-success' :
-                    score <= 2 ? 'bg-warning' : 'bg-danger'
+                    score >= threshold ? 'bg-success' :       // 前30%优秀
+                    score >= (threshold * 0.5) ? 'bg-primary' : // 中间35%良好
+                    'bg-danger'                                // 后35%需关注
                 }`;
             }
         });
@@ -103,43 +123,53 @@ const SleepAssessment = (() => {
         sleepRadarChart.update();
     };
 
-    // 显示专业建议
     const showRecommendations = (score) => {
         const recommendations = [
-            { threshold: 5, 
-              text: "您的睡眠质量优秀，继续保持规律作息",
-              detail: "建议：\n• 保持7-9小时睡眠\n• 每周至少5天户外运动\n• 睡前1小时避免蓝光照射" },
+            { threshold: 18, 
+              text: "您的睡眠质量非常优秀",
+              detail: "继续保持：\n• 规律作息\n• 健康饮食\n• 适度运动" },
+            { threshold: 13,
+              text: "您的睡眠质量良好",
+              detail: "改进建议：\n• 减少睡前使用电子设备\n• 保持卧室安静舒适" },
             { threshold: 10,
-              text: "存在轻度睡眠障碍",
-              detail: "建议：\n• 建立固定作息时间\n• 避免午睡超过30分钟\n• 尝试冥想放松训练" },
-            { threshold: 15,
-              text: "中度睡眠问题需重视",
-              detail: "建议：\n• 记录睡眠日记\n• 进行多导睡眠监测\n• 咨询睡眠专科医师" },
-            { threshold: 21,
-              text: "严重睡眠障碍警告",
-              detail: "立即行动：\n• 尽快就医检查\n• 排除睡眠呼吸暂停\n• 评估焦虑抑郁状态" }
+              text: "您的睡眠质量一般",
+              detail: "需要关注：\n• 记录睡眠日记\n• 调整作息时间" },
+            { threshold: 0,
+              text: "您的睡眠质量较差",
+              detail: "立即行动：\n• 咨询专业医师\n• 进行睡眠监测" }
         ];
-
-        const result = recommendations.find(r => score <= r.threshold) || recommendations[3];
-        const alertBox = document.getElementById('resultAlert') || createResultAlert();
+    
+        // 清理旧提示框
+        const oldAlert = document.getElementById('resultAlert');
+        if (oldAlert) oldAlert.remove();
+    
+        // 创建新提示框
+        const alertHTML = `
+            <div class="alert alert-info mt-4 alert-dismissible fade show" id="resultAlert">
+                <h5 class="alert-heading" id="resultText"></h5>
+                
+            </div>
+        `;
         
+        // 插入到结果卡片内部（重要修改点）
+        document.querySelector('.assessment-result .card-body').insertAdjacentHTML('beforeend', alertHTML);
+        
+        // 获取结果对象
+        const result = recommendations.find(r => score <= r.threshold) || recommendations[3];
+        
+        // 立即填充内容（确保元素存在）
+        const alertBox = document.getElementById('resultAlert');
         alertBox.querySelector('#resultText').innerHTML = `
             <strong>${result.text}</strong><br>
             <small class="text-muted">${result.detail.replace(/\n/g, '<br>')}</small>
         `;
+    
+        // 初始化Bootstrap组件（重要新增）
+        new bootstrap.Alert(alertBox);
         alertBox.scrollIntoView({ behavior: 'smooth' });
     };
-
-    // 创建结果提示框
-    const createResultAlert = () => {
-        const alertHTML = `
-            <div class="alert alert-info mt-4" id="resultAlert">
-                <h5 class="alert-heading" id="resultText"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
-        `;
-        return document.querySelector('.assessment-form').insertAdjacentHTML('beforeend', alertHTML);
-    };
+    
+    // 移除原有的createResultAlert函数
 
     // 表单提交处理
     const handleFormSubmit = (e) => {
