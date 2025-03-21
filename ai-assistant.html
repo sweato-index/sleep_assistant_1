@@ -77,22 +77,46 @@
     <!-- ============== main-content-start ============== -->
     <div class="main-content">
         <div class="container">
-            <h1>AI 伴眠助手</h1>
+            <div class="chat-header-actions">
+                <h1>AI 伴眠助手</h1>
+                <button id="themeToggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
             <div class="chat-container">
                 <div class="chat-header">
-                    <h3>AI 睡眠助手</h3>
+
                     <div class="role-selector">
-                        <button class="role-btn" data-role="default">默认助手</button>
-                        <button class="role-btn" data-role="sister">知心大姐姐</button>
-                        <button class="role-btn" data-role="doctor">睡眠医生</button>
-                        <button class="role-btn" data-role="coach">睡眠教练</button>
+                        <button class="role-btn" data-role="default">
+                            <i class="fas fa-robot"></i>
+                            <span>默认助手</span>
+                        </button>
+                        <button class="role-btn" data-role="sister">
+                            <i class="fas fa-heart"></i>
+                            <span>知心大姐姐</span>
+                        </button>
+                        <button class="role-btn" data-role="doctor">
+                            <i class="fas fa-stethoscope"></i>
+                            <span>睡眠医生</span>
+                        </button>
+                        <button class="role-btn" data-role="coach">
+                            <i class="fas fa-running"></i>
+                            <span>睡眠教练</span>
+                        </button>
                     </div>
-                    <button id="stopBtn" class="stop-btn">停止响应</button>
+                    <button id="stopBtn" class="stop-btn">
+                        <i class="fas fa-stop-circle"></i>
+                        <span>停止响应</span>
+                    </button>
                 </div>
                 <div id="chatBody" class="chat-body"></div>
-                <div class="chat-input">
+                <div class="chat-input-area">
                     <input type="text" id="chatInput" placeholder="输入你的睡眠问题...">
-                    <button id="sendBtn">发送</button>
+                    <button id="sendBtn" class="send-btn">
+                        <span>发送</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
                 </div>
             </div>
         </div>

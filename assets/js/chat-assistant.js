@@ -1,4 +1,41 @@
 // Chat Assistant JavaScript
+// Theme toggle functionality
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+
+// Check for saved theme in localStorage
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    body.setAttribute('data-theme', savedTheme);
+    themeToggle.classList.toggle('active', savedTheme === 'dark');
+}
+
+themeToggle.addEventListener('click', () => {
+    const isDark = body.getAttribute('data-theme') === 'dark';
+    body.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    themeToggle.classList.toggle('active', !isDark);
+});
+
+// Role selector functionality
+const roleButtons = document.querySelectorAll('.role-btn');
+roleButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        roleButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        // Add logic to change assistant role here
+    });
+});
+
+// Loading state for send button
+const sendBtn = document.getElementById('sendBtn');
+sendBtn.addEventListener('click', () => {
+    sendBtn.classList.add('loading');
+    // Add your chat logic here
+    setTimeout(() => {
+        sendBtn.classList.remove('loading');
+    }, 2000); // Simulate loading for 2 seconds
+});
 document.addEventListener('DOMContentLoaded', function() {
     // Chat elements
     const chatBody = document.getElementById('chatBody');
