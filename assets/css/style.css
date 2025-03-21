@@ -2185,14 +2185,110 @@ form.form-signin-signup button {
   padding: 15px;
   border-radius: 90%;
 }
-/* 评估结果卡片 */
+/* ================== Assessment Styles ================== */
+.assessment-form {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.question-group {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.question-group:hover {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(115,84,255,0.1);
+}
+
+.question-group p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #262339;
+  margin-bottom: 1.2rem;
+}
+
+.form-check {
+  margin: 0.8rem 0;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.form-check:hover {
+  background: #f8f9fa;
+}
+
+.form-check-input {
+  width: 1.2em;
+  height: 1.2em;
+  margin-top: 0.2em;
+  border: 2px solid #dee2e6;
+}
+
+.form-check-input:checked {
+  background-color: #7354ff;
+  border-color: #7354ff;
+}
+
+.form-check-label {
+  margin-left: 0.8rem;
+  font-size: 1rem;
+  color: #495057;
+  cursor: pointer;
+}
+
+/* Custom checkbox styling */
+input[type="checkbox"] + label {
+  position: relative;
+  padding-left: 2rem;
+}
+
+input[type="checkbox"] + label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid #dee2e6;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+input[type="checkbox"]:checked + label::before {
+  background: #7354ff;
+  border-color: #7354ff;
+}
+
+/* Submit button */
+#submitBtn {
+  background: #7354ff;
+  padding: 0.8rem 2.5rem;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+#submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(115,84,255,0.3);
+}
+
+/* Assessment result card */
 .assessment-result {
   position: sticky;
   top: 20px;
   transition: all 0.3s ease;
+  border: 1px solid rgba(115,84,255,0.1);
 }
 
-/* 进度条动画 */
 .progress-bar-animated {
   animation: progress-stripes 1s linear infinite;
 }
@@ -2202,7 +2298,6 @@ form.form-signin-signup button {
   to { background-position: 0 0; }
 }
 
-/* 雷达图提示框样式 */
 .chartjs-tooltip {
   background: rgba(0, 0, 0, 0.7) !important;
   border-radius: 4px;
@@ -2211,9 +2306,9 @@ form.form-signin-signup button {
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-/* 维度评分徽章 */
 .list-group-item .badge {
   transition: all 0.3s ease;
   font-weight: 500;
+  background: #7354ff;
 }
 /*# sourceMappingURL=style.css.map */
