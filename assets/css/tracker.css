@@ -1,0 +1,20 @@
+.fc-event-excellent { background: #00C853 !important; border-color: #00C853 !important; }  /* 优秀-绿色 */
+.fc-event-good     { background: #64DD17 !important; border-color: #64DD17 !important; }  /* 良好-浅绿 */
+.fc-event-average  { background: #FFD600 !important; border-color: #FFD600 !important; }  /* 一般-黄色 */
+.fc-event-poor     { background: #FF6D00 !important; border-color: #FF6D00 !important; }  /* 较差-橙色 */
+.fc-event-critical { background: #D50000 !important; border-color: #D50000 !important; }  /* 极差-红色 */
+.chart-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#calendar {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}

@@ -72,8 +72,8 @@ const SleepAssessment = (() => {
         progress.style.width = `${percentage}%`;
         progress.textContent = `${score}/${MAX_SCORE}`;
         progress.className = `progress-bar progress-bar-striped ${
-            score >= 15 ? 'bg-success' :      // 15-19 优秀
-            score >= 10 ? 'bg-primary' :       // 10-14 良好
+            score >= 14 ? 'bg-success' :      // 15-19 优秀
+            score >= 9 ? 'bg-primary' :       // 10-14 良好
             score >= 5 ? 'bg-warning' :         // 5-9 一般
             'bg-danger'                        // 0-4 需关注
         }`;
