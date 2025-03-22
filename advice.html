@@ -215,8 +215,10 @@
  document.addEventListener('DOMContentLoaded', function() {
      // 获取需要的元素
      const startPracticeBtn = document.getElementById('start-practice');
-     const moodModule = document.querySelector('.mood-module');
-     const videoContainer = document.getElementById('video-container');
+     const moduleCard = document.getElementById('mood-module');
+     
+     // 获取所有模块卡片以便同步高度
+     const allModuleCards = document.querySelectorAll('.module-card');
      
      // 添加点击事件监听器
      if(startPracticeBtn) {
@@ -224,7 +226,7 @@
              e.preventDefault(); // 阻止默认的链接行为
              
              // 清空模块卡片内容
-             moodModule.innerHTML = `
+             moduleCard.innerHTML = `
                  <div class="video-wrapper">
                      <iframe 
                          id="bilibiliVideo"
@@ -243,9 +245,39 @@
              `;
              
              // 添加视频播放器样式
-             moodModule.classList.add('video-player-active');
+             moduleCard.classList.add('video-player-active');
+             
+             // 调整其他模块卡片的高度以匹配
+             const newHeight = moduleCard.offsetHeight;
+             allModuleCards.forEach(card => {
+                 if(card !== moduleCard) {
+                     card.style.height = newHeight + 'px';
+                 }
+             });
          });
      }
+     
+     // 初始化时确保所有卡片高度一致
+     function equalizeCardHeights() {
+         let maxHeight = 0;
+         
+         // 找出最高的卡片
+         allModuleCards.forEach(card => {
+             const height = card.offsetHeight;
+             if(height > maxHeight) {
+                 maxHeight = height;
+             }
+         });
+         
+         // 设置所有卡片为最高高度
+         allModuleCards.forEach(card => {
+             card.style.height = maxHeight + 'px';
+         });
+     }
+     
+     // 页面加载和窗口调整时平衡高度
+     equalizeCardHeights();
+     window.addEventListener('resize', equalizeCardHeights);
  });
  </script>
             
