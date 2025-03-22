@@ -127,7 +127,44 @@
 
     // 日期点击处理
     const handleDateClick = info => {
-        document.getElementById('recordDate').value = info.dateStr;
+        // 填充日期输入框
+        const dateInput = document.getElementById('recordDate');
+        dateInput.value = info.dateStr;
+        
+        // 添加日期输入框动画
+        dateInput.animate([
+            { transform: 'scale(1)' },
+            { transform: 'scale(1.05)' },
+            { transform: 'scale(1)' }
+        ], {
+            duration: 200,
+            easing: 'ease-out'
+        });
+
+        // 添加日历单元格动画
+        info.dayEl.animate([
+            { transform: 'scale(1)', backgroundColor: 'transparent' },
+            { transform: 'scale(1.1)', backgroundColor: '#c0b4f8a1' },
+            { transform: 'scale(1)', backgroundColor: 'transparent' }
+        ], {
+            duration: 300,
+            easing: 'ease-out'
+        });
+
+        // 添加波纹效果
+        const ripple = document.createElement('div');
+        ripple.className = 'ripple-effect';
+        info.dayEl.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+
+        // 移除之前的高亮
+        const prevHighlighted = document.querySelector('.fc-day-highlight');
+        if (prevHighlighted) {
+            prevHighlighted.classList.remove('fc-day-highlight');
+        }
+        
+        // 添加新的高亮
+        info.dayEl.classList.add('fc-day-highlight');
     };
 
     // 初始化图表
@@ -298,5 +335,9 @@
         $('[data-bs-toggle="tooltip"]').tooltip();
 
     // 启动应用
-    document.addEventListener('DOMContentLoaded', init);
+    if (document.readyState !== 'loading') {
+        init();
+    } else {
+        document.addEventListener('DOMContentLoaded', init);
+    }
 })();
