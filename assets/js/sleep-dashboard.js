@@ -18,7 +18,7 @@ function handleDashboardScroll() {
 // 关闭睡眠看板
 function closeDashboard() {
   const dashboardContainer = document.getElementById('sleep-dashboard-container');
-  dashboardContainer.classList.remove('visible');
+  dashboardContainer.style.display = 'none';
 }
 
 // 初始化睡眠看板
