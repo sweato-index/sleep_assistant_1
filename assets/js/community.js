@@ -7,10 +7,41 @@ $(document).ready(function() {
         mirror: false
     });
 
+    // 处理页面加载时的锚点跳转
+    if(window.location.hash) {
+        const target = $(window.location.hash);
+        if(target.length) {
+            $('html, body').animate({
+                scrollTop: target.offset().top - 100
+            }, 800);
+        }
+    }
+
+    // // 处理导航栏点击事件
+    // $('.dropdown-menu a').click(function(e) {
+    //     const target = $(this).attr('href');
+        
+    //     // 滚动到目标位置
+    //     if(target.startsWith('#')) {
+    //         e.preventDefault();
+    //         $('html, body').animate({
+    //             scrollTop: $(target).offset().top - 100
+    //         }, 800);
+    //     }
+    // });
+
     // 初始化tab切换
     $('.nav-tabs a').click(function(e) {
         e.preventDefault();
+        const target = $(this).attr('href');
         $(this).tab('show');
+        
+        // 滚动到目标位置
+        if(target.startsWith('#')) {
+            $('html, body').animate({
+                scrollTop: $(target).offset().top - 100
+            }, 800);
+        }
     });
 
     // 处理表单提交

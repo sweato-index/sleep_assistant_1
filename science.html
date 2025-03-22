@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="assets/css/default.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/hearder-area.css">
 </head>
 <body>
     <!-- preloader -->
@@ -50,22 +51,36 @@
                             <nav id="mobile-menu">
                                 <ul>
                                     <li><a href="index.html">首页</a></li>
-                                    <li><a href="science.html">睡眠知识中心</a></li>
-                                    <li><a href="tracker.html">睡眠记录与分析</a></li>
-                                    <li><a href="assessment.html">睡眠评估中心</a></li>
-                                    <li><a href="advice.html">个性化建议中心</a></li>
-                                    <li><a href="profile.html">用户中心</a></li>
-                                    <li><a href="community.html">睡眠社区</a></li>
+                                    <li><a href="science.html">知识中心</a></li>
+                                    <li><a href="tracker.html">睡眠记录</a></li>
+                                    <li><a href="assessment.html">睡眠评分</a></li>
+                                    <li><a href="advice.html">睡眠助手</a></li>
+                                    <li class="dropdown">
+                                        <a href="community.html">交流社区 <i class="fas fa-chevron-down"></i></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#forum">论坛</a></li>
+                                            <li><a href="#groups">群组</a></li>
+                                            <li><a href="#qna">专家问答</a></li>
+                                            <li><a href="#diary">睡眠日记</a></li>
+                                            <li><a href="#challenges">挑战活动</a></li>
+                                        </ul>
+                                    </li>
                                 </ul>
                             </nav>
                         </div>
                         <div class="mobile-menu"></div>
                     </div>
-                    <div class="col-xl-3 col-lg-3 d-none d-lg-block">
-                        <div class="header-action-button f-right">
-                            <a href="#signinModal" data-toggle="modal" class="btn header-btn login active-btn">登录</a>
-                            <a href="#signupModal" data-toggle="modal" class="btn header-btn">注册</a>
-                        </div>
+                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                            <div class="header-user-profile f-right">
+                                <div class="user-avatar">
+                                    <img src="assets/img/author-1.png" alt="用户头像">
+                                </div>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#signinModal" data-toggle="modal">登录</a></li>
+                                    <li><a href="#signupModal" data-toggle="modal">注册</a></li>
+                                    <li><a href="profile.html">用户中心</a></li>
+                                </ul>
+                            </div>
                     </div>
                 </div>
             </div>
