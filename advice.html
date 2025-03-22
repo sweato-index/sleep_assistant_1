@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="assets/css/default.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
-    <link rel="stylesheet" href="assets/css/hearder-area.css">
 </head>
 <body>
     <!-- preloader -->
@@ -51,36 +50,22 @@
                             <nav id="mobile-menu">
                                 <ul>
                                     <li><a href="index.html">首页</a></li>
-                                    <li><a href="science.html">知识中心</a></li>
-                                    <li><a href="tracker.html">睡眠记录</a></li>
-                                    <li><a href="assessment.html">睡眠评分</a></li>
+                                    <li><a href="science.html">睡眠知识中心</a></li>
+                                    <li><a href="tracker.html">睡眠记录与分析</a></li>
+                                    <li><a href="assessment.html">睡眠评估中心</a></li>
                                     <li><a href="advice.html">睡眠助手</a></li>
-                                    <li class="dropdown">
-                                        <a href="community.html">交流社区 <i class="fas fa-chevron-down"></i></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#forum">论坛</a></li>
-                                            <li><a href="#groups">群组</a></li>
-                                            <li><a href="#qna">专家问答</a></li>
-                                            <li><a href="#diary">睡眠日记</a></li>
-                                            <li><a href="#challenges">挑战活动</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href="profile.html">用户中心</a></li>
+                                    <li><a href="community.html">睡眠社区</a></li>
                                 </ul>
                             </nav>
                         </div>
                         <div class="mobile-menu"></div>
                     </div>
-                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
-                            <div class="header-user-profile f-right">
-                                <div class="user-avatar">
-                                    <img src="assets/img/author-1.png" alt="用户头像">
-                                </div>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#signinModal" data-toggle="modal">登录</a></li>
-                                    <li><a href="#signupModal" data-toggle="modal">注册</a></li>
-                                    <li><a href="profile.html">用户中心</a></li>
-                                </ul>
-                            </div>
+                    <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                        <div class="header-action-button f-right">
+                            <a href="#signinModal" data-toggle="modal" class="btn header-btn login active-btn">登录</a>
+                            <a href="#signupModal" data-toggle="modal" class="btn header-btn">注册</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -194,20 +179,77 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- 情绪调节 -->
-                <div class="col-lg-6 mb-4">
-                    <div class="module-card">
+                
+                <!-- 右侧视频播放器 -->
+                <div class="col-lg-6">
+                    <div class="module-card" id="mood-module">
                         <div class="mood-module">
                             <div class="mood-icon">
                                 <i class="fas fa-spa"></i>
-                        </div>
+                            </div>
                             <h3>睡前放松练习</h3>
                             <p>通过轻柔的动作和冥想引导，帮助您放松身心</p>
-                            <a href="https://search.bilibili.com/all?keyword=%E7%9D%A1%E5%89%8D%E5%86%A5%E6%83%B3%E6%B7%B1%E5%BA%A6%E7%9D%A1%E7%9C%A0&from_source=webtop_search&spm_id_from=333.1007&search_source=2" class="btn-soft">开始练习</a>
+                            <a href="#" class="btn-soft" id="start-practice">开始练习</a>
+                        </div>
+                        <div class="video-player-container d-none" id="video-container">
+                            <div class="video-wrapper">
+                                <iframe 
+                                    id="bilibiliVideo"
+                                    src="https://player.bilibili.com/player.html?bvid=BV1fS4y117u7"
+                                    scrolling="no"
+                                    border="0"
+                                    frameborder="no"
+                                    allowfullscreen="true"
+                                    style="width:100%;height:100%;position:absolute;top:0;left:0;">
+                                </iframe>
+                            </div>
+                            <div class="video-info">
+                                <h3>睡前放松冥想</h3>
+                                <p class="video-description">通过温和的引导冥想，帮助您放松身心，为美好的睡眠做准备。</p>
+                            </div>
                         </div>
                     </div>
                 </div>
+ 
+ <script>
+ document.addEventListener('DOMContentLoaded', function() {
+     // 获取需要的元素
+     const startPracticeBtn = document.getElementById('start-practice');
+     const moodModule = document.querySelector('.mood-module');
+     const videoContainer = document.getElementById('video-container');
+     
+     // 添加点击事件监听器
+     if(startPracticeBtn) {
+         startPracticeBtn.addEventListener('click', function(e) {
+             e.preventDefault(); // 阻止默认的链接行为
+             
+             // 清空模块卡片内容
+             moodModule.innerHTML = `
+                 <div class="video-wrapper">
+                     <iframe 
+                         id="bilibiliVideo"
+                         src="https://player.bilibili.com/player.html?bvid=BV1fS4y117u7"
+                         scrolling="no"
+                         border="0"
+                         frameborder="no"
+                         allowfullscreen="true"
+                         style="width:100%;height:100%;position:absolute;top:0;left:0;">
+                     </iframe>
+                 </div>
+                 <div class="video-info">
+                     <h3>睡前放松冥想</h3>
+                     <p class="video-description">通过温和的引导冥想，帮助您放松身心，为美好的睡眠做准备。</p>
+                 </div>
+             `;
+             
+             // 添加视频播放器样式
+             moodModule.classList.add('video-player-active');
+         });
+     }
+ });
+ </script>
+            
+
             </div>
         </div>
     </div>
@@ -243,9 +285,8 @@
     /* 顶部导航样式 */
     .page-header {
         display: flex;
-        flex-direction: column; /* 垂直排列 */
-        align-items: center; /* 水平居中 */
-        justify-content: center; /* 垂直居中 */
+        justify-content: space-between;
+        align-items: center;
         padding: 15px 25px;
         background: rgba(255, 255, 255, 0.3);
         border-radius: 15px;
@@ -928,6 +969,81 @@
     a.btn-soft:active {
         transform: translateY(0);
     }
+    
+
+    /* 视频播放器样式 */
+    .video-player-container {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        overflow: hidden;
+        margin: 0 auto 20px;
+        width: 100%;
+        max-width: 1200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .video-wrapper {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 宽高比 */
+        background: #000;
+    }
+
+    .main-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .video-info {
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.8);
+        width: 100%;
+    }
+
+    .video-info h3 {
+        color: #333;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+        opacity: 0.9;
+    }
+
+    .video-description {
+        color: #666;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 0;
+        opacity: 0.8;
+    }
+
+    /* 响应式调整 */
+    @media (max-width: 991px) {
+        .video-player-container {
+            margin-bottom: 30px;
+        }
+    }
+
+    .module-card.video-player-active {
+        height: 400px; /* 调整为您需要的高度 */
+        position: relative;
+        overflow: hidden;
+    }
+
+    .video-wrapper {
+        position: relative;
+        width: 100%;
+        height: 75%; /* 视频占容器高度的比例 */
+        overflow: hidden;
+    }
+
+    .video-info {
+        padding: 15px;
+    }
     </style>
 
     <!-- JS here -->
@@ -1152,28 +1268,35 @@
             }, 2000);
         });
     });
-        // 添加复选框点击事件
-        $('#checklist input[type="checkbox"]').on('change', function() {
-            const label = $(this).next('label');
-            if (this.checked) {
-                label.css({
-                    'transform': 'translateY(-5px)',
-                    'transition': 'transform 0.3s ease'
-                });
-            } else {
-                label.css({
-                    'transform': 'translateY(5px)',
-                    'transition': 'transform 0.3s ease'
-                });
-            }
-        });
     </script>
-    <style>
-        /* 添加文字上移动画 */
-        #checklist label {
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('#start-practice').click(function(e){
+            e.preventDefault(); // 阻止默认的链接跳转行为
+    
+            // 创建视频播放器容器
+            var videoPlayerContainer = $('<div class="video-player-container">');
+            var videoWrapper = $('<div class="video-wrapper">');
+            var iframe = $('<iframe id="bilibiliVideo" scrolling="no" border="0" frameborder="no" allowfullscreen="true" style="width:100%;height:100%;position:absolute;top:0;left:0;"></iframe>');
+            iframe.attr('src', 'https://player.bilibili.com/player.html?bvid=BV1fS4y117u7');
+    
+            // 创建视频信息部分
+            var videoInfo = $('<div class="video-info">');
+            var h3 = $('<h3>睡前放松冥想</h3>');
+            var p = $('<p class="video-description">通过温和的引导冥想，帮助您放松身心，为美好的睡眠做准备。</p>');
+    
+            // 将视频播放器和信息添加到容器中
+            videoWrapper.append(iframe);
+            videoInfo.append(h3);
+            videoInfo.append(p);
+            videoPlayerContainer.append(videoWrapper);
+            videoPlayerContainer.append(videoInfo);
+    
+            // 替换原有模块
+            $('#module-card').html(videoPlayerContainer);
+        });
+    });
+    </script>
 </body>
 </html>
