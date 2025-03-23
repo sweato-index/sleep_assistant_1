@@ -32,16 +32,26 @@ $(document).ready(function() {
 
     // 初始化tab切换
     $('.nav-tabs a').click(function(e) {
-        e.preventDefault();
         const target = $(this).attr('href');
-        $(this).tab('show');
+        console.log('Tab link clicked:', target);
         
-        // 滚动到目标位置
-        if(target.startsWith('#')) {
+        // 只阻止以#开头的链接的默认行为
+        if(target && target.startsWith('#')) {
+            console.log('Preventing default for anchor link');
+            e.preventDefault();
+            $(this).tab('show');
             $('html, body').animate({
                 scrollTop: $(target).offset().top - 100
             }, 800);
         }
+        // 其他链接保持默认行为
+    });
+
+    // 确保AI助手按钮正常工作
+    $('a[href="ai-assistant.html"]').click(function(e) {
+        console.log('AI Assistant link clicked');
+        // 确保不阻止默认行为
+        return true;
     });
 
     // 处理表单提交
